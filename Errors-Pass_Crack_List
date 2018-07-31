@@ -1,0 +1,5 @@
+C:\Users\kty\Desktop>python Pass_Crack_List.py
+  File "Pass_Crack_List.py", line 21
+    attempt_num.insert(0, attempts)
+    
+SyntaxError: invalid syntax
