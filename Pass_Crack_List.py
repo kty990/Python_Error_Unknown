@@ -1,3 +1,5 @@
+#author [kty]
+
 import itertools
 import string
 
