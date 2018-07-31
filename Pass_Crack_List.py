@@ -4,8 +4,6 @@ import string
 use = []
 attempt_num = []
 
-file = open("somethingRandom.txt", "w")
-
 def guess_password(real):
 	chars = string.ascii_uppercase + string.ascii_lowercase + string.digits
 	attempts = 0
@@ -15,17 +13,17 @@ def guess_password(real):
 			guess = ''.join(guess)
 			print(guess)
 			if guess == real:
+				attempt_num.insert(0, attempts)
+				use.insert(0, guess)
 				return 'password is {}. found in {} guesses.'.format(guess, attempts)
 				print(guess + str(attempts)		
-				#use.insert(0, guess)
-				attempt_num.insert(0, attempts)
 			else:
-				#use.insert(0, guess)
+				use.insert(0, guess)
 				attempt_num.insert(0, attempts)
 
 
 num = input("How many characters is max? : ")
-correction = int(num)
+correction = int(num) * "9"
 
 guess_password(correction)
 
