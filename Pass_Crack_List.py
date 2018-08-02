@@ -1,10 +1,10 @@
-#author [kty]
-
 import itertools
 import string
 
 use = []
 attempt_num = []
+
+use2 = open("use.txt", "w")
 
 def guess_password(real):
 	chars = string.ascii_uppercase + string.ascii_lowercase + string.digits
@@ -17,39 +17,50 @@ def guess_password(real):
 			if guess == real:
 				attempt_num.insert(0, attempts)
 				use.insert(0, guess)
-				return 'password is {}. found in {} guesses.'.format(guess, attempts)
-				print(guess + str(attempts)		
+				return
+				print(guess + str(attempts))	
 			else:
 				use.insert(0, guess)
 				attempt_num.insert(0, attempts)
 
 
 num = input("How many characters is max? : ")
-correction = int(num) * "9"
+
+if int(num) > 0 and int(num) < 1000:
+	correction = int(num) * "9"
 
 guess_password(correction)
 
 
 while True:
-	command = input("Command -> ")
-	commands = "find"
+	commands = "find, use"
 	print("commands are case sensitive!")
 	print(commands)
+	command = input("Command -> ")
 	if command == "find":
 		find_ = input("What is the arrangement of letters you would like to find? -> ")
 		if find_ in use:
 			i = 0
-			for x in range(0, 9999999):
+			attempt_numCurr = i
+			print("Find in use")
+			while find_ != use[i]:
+				i += 1
 				if find_ == use[i]:
 					attempt_numCurr = i
-					break
-			print(attempt_numCurr)
+					print(attempt_numCurr)
 	if command == "use":
-		find_ = input("What is the arrangement of letters you would like to use? -> ")
-		if find_ in use:
+		use_ = input("What is the arrangement of letters you would like to use? -> ")
+		if use_ in use:
+			print("Looking... please stand by!")
 			i = 0
-			for x in range(0, 9999999):
-				if find_ == use[i]:
+			for x in range(0, 999999):
+				pass
+			for x in range(0, len(use_)):
+				if use_ == use[i]:
 					attempt_numCurr = i
-					break
-				print(attempt_numCurr)
+				else:
+					i += 1
+				print(str(attempt_numCurr))
+			use2.write(use[attempt_numCurr])
+	if command == "quit()" or command == "exit":
+		quit()
